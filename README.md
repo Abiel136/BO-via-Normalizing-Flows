@@ -9,13 +9,7 @@ Lancaster University
 
 ## Abstract
 
-Bayesian optimisation has emerged as a powerful sample-efficient global optimisation technique for expensive black-box functions. It finds extensive applications in hyperparameter tuning, automated machine learning, and experimental design. At its core, BO iteratively selects the next point to evaluate by maximising an acquisition function built upon a probabilistic surrogate model—typically a Gaussian Process.
-
-However, the performance of standard BO can significantly deteriorate in high-dimensional settings due to the curse of dimensionality. A promising approach to address this challenge is to assume a lower-dimensional latent structure underlying the objective function.
-
-This dissertation explores a novel approach to high-dimensional Bayesian optimisation by embedding normalising flows into the optimisation process. Normalising flows are generative models that learn complex, flexible transformations between probability distributions, enabling efficient density estimation and sampling. We develop and analyse algorithms that embed normalising flows into the BO framework across three distinct integration strategies. Firstly, we embed flows as probabilistic encoders to learn low-dimensional latent representations of the input space. Secondly, we incorporate flows to learn flexible, non-Gaussian acquisition functions. Thirdly, we integrate flows to enhance the Gaussian Process surrogate model by learning non-Gaussian likelihoods and posterior distributions.
-
-We provide a comprehensive theoretical and empirical analysis of these approaches. Through extensive experiments on synthetic benchmarks and real-world hyperparameter optimisation tasks, we demonstrate that flow-enhanced BO can achieve competitive performance compared to standard baselines. The flexibility and expressiveness of normalising flows offer a promising avenue for extending Bayesian optimisation to challenging high-dimensional regimes.
+Bayesian Optimisation (BO) is a powerful framework for optimising expensive black-box functions, combining surrogate models with acquisition functions to guide sampling. This dissertation focuses on Gaussian Processes as surrogates, emphasising their uncertainty modelling and kernel design, and addresses the challenge of acquisition function scalability in high dimensions. We propose a novel BO method that replaces the acquisition function with a normalising flow framework, using local Gaussian Processes to learn probability distributions over promising points. Experiments show that our approach scales more efficiently with dimension and achieves faster iterations than standard BO, though it tends towards over-exploitation due to limitations of the local models. We outline strategies for improvement, including adaptive local modelling, geometry-aware flows, and spline-based transformations, to enhance robustness in high-dimensional optimisation.
 
 ---
 
@@ -27,12 +21,19 @@ We provide a comprehensive theoretical and empirical analysis of these approache
 
 ## Overview
 
-This research investigates three novel approaches to integrating normalising flows into Bayesian optimisation:
+This research investigates approaches to integrating normalising flows into Bayesian optimisation as a way to replace the need for maximising acquisition functions in high dimensions. We do this by utilising the notion of *local Gaussian Processes* to gauge where the model should sample from next.
 
-1. **Flow-based Latent Embedding**: Learning low-dimensional representations of high-dimensional input spaces
-2. **Flow-enhanced Acquisition Functions**: Flexible, non-Gaussian acquisition functions
-3. **Flow-improved Surrogate Models**: Enhanced Gaussian Processes with non-Gaussian likelihoods
+### Key Takeaways
 
+- We use the local Gaussian Processes created at each sampled point to determine parameters for radial normalising flows
+- We introduce a reparameterisation of radial normalising flows to allow for more sophisticated control
+- Our algorithm (FLOWBO) outperforms traditional BO early on but struggles to incorporate the global sampled landscape effectively — leading to stagnation
+- As hoped, our model scales well to high dimensions in terms of speed and computational complexity
+
+### Improvements and Further Work
+
+- **Local modelling**: Our local approximation uses the kernel determined by the global GP (trained on all points). This means local approximations are inaccurate for functions whose scale changes drastically over the landscape (e.g., Ackley). Future work could fit many local GPs akin to TuRBO
+- **Flexible transformations**: Radial flows may be replaced with more flexible transformations such as spline-based flows 
 ---
 
 ## Keywords
