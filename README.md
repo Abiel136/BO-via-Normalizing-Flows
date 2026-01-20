@@ -21,22 +21,7 @@ We provide a comprehensive theoretical and empirical analysis of these approache
 
 ## Dissertation
 
-You can view or download the full dissertation below:
-
 [**Download Dissertation.pdf**](./Dissertation.pdf)
-
-### View Online
-
-<div align="center">
-  <iframe
-    src="./Dissertation.pdf"
-    width="100%"
-    height="800px"
-    style="border: 1px solid #ddd; border-radius: 8px;"
-  ></iframe>
-</div>
-
-*Note: If the PDF viewer above doesn't load in your GitHub view, please click the download link above or view this repository on GitHub Pages for the best reading experience.*
 
 ---
 
