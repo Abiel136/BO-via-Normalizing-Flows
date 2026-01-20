@@ -2,7 +2,7 @@
 
 **Abiel Talwar**
 
-Master of Science in Mathematics (Data Science)
+MSc Statistics supervised by Dr Henry Moss
 Lancaster University
 
 ---
