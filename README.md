@@ -2,7 +2,7 @@
 
 **Abiel Talwar**
 
-MSc Statistics supervised by Dr Henry Moss
+MSc Statistics dissertation supervised by Dr Henry Moss
 
 Lancaster University
 
